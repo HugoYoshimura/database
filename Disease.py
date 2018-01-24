@@ -14,9 +14,10 @@ class Disease(Base.Base):
     plant = relationship('Plant', back_populates='diseases')
     images = relationship('Image', back_populates='disease')
 
-    def __init__(self, id, scientificName, commonName, idPlant, plant):
+    def __init__(self, id, scientificName, commonName, idPlant, plant, images):
         self.id = id
         self.scientificName = scientificName
         self.commonName = commonName
         self.idPlant = idPlant
         self.plant = plant
+        self.images = images
