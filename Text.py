@@ -1,5 +1,6 @@
 from sqlalchemy import Column, String, Integer
-from capivaraprojects.greeneyes.repository.base import Base
+import models.Text
+from repository.base import Base
 
 
 class Text(Base.Base):
@@ -11,9 +12,17 @@ class Text(Base.Base):
     value = Column(String(2000))
     description = Column(String(2000))
 
-    def __init__(self, id, language, tag, value, description):
-        self.id = id
-        self.language = language
-        self.tag = tag
-        self.value = value
-        self.description = description
+    def __init__(self, id, language, tag, value, description,
+                 text=models.Text()):
+        if (not text.id or not text.value):
+            self.id = text.id
+            self.language = text.language
+            self.tag = text.tag
+            self.value = text.value
+            self.description = text.description
+        else:
+            self.id = id
+            self.language = language
+            self.tag = tag
+            self.value = value
+            self.description = description

@@ -1,7 +1,8 @@
 from sqlalchemy import Column, String, Integer
 from sqlalchemy.orm import relationship
-from capivaraprojects.greeneyes.database.Disease import Disease
-from capivaraprojects.greeneyes.repository.base import Base
+from models.Plant import Plant as PlantModel
+import database.Disease
+from repository.base import Base
 
 
 class Plant(Base.Base):
@@ -13,8 +14,21 @@ class Plant(Base.Base):
     diseases = relationship('Disease',
                             back_populates='plant')
 
-    def __init__(self, id, scientificName, commonName, diseases):
-        self.id = id
-        self.scientificName = scientificName
-        self.commonName = commonName
-        self.diseases = diseases
+    def __init__(self,
+                 id=0,
+                 scientificName="",
+                 commonName="",
+                 diseases=[],
+                 plant=PlantModel()):
+        if(not plant.commonName or not plant.id):
+            self.id = plant.id
+            self.scientificName = plant.scientificName
+            self.commonName = plant.commonName
+            self.diseases = []
+            for disease in plant.diseases:
+                self.diseases.append(database.Disease.Disease(disease))
+        else:
+            self.id = id
+            self.scientificName = scientificName
+            self.commonName = commonName
+            self.diseases = diseases
