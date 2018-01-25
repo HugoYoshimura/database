@@ -1,5 +1,7 @@
 from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import relationship
+from capivaraprojects.greeneyes.models.Image import ImageModel
+from capivaraprojects.greeneyes.database.Disease import Disease
 from capivaraprojects.greeneyes.repository.base import Base
 
 
@@ -15,17 +17,24 @@ class Image(Base.Base):
     disease = relationship('Disease', back_populates='images')
 
     def __init__(self,
-                 id,
-                 url,
-                 description,
-                 source,
-                 size,
-                 idDisease,
-                 disease):
-        self.id = id
-        self.url = url
-        self.description = description
-        self.source = source
-        self.size = size
-        self.idDisease = idDisease
-        self.disease = disease
+                 id=0,
+                 url='',
+                 description='',
+                 source='',
+                 size=0,
+                 disease=Disease(),
+                 image=ImageModel()):
+        if (not image.id or not image.url):
+            self.id = image.id
+            self.url = image.url
+            self.description = image.description
+            self.source = image.source
+            self.size = image.size
+            self.disease = Disease(image.disease)
+        else:
+            self.id = id
+            self.url = url
+            self.description = description
+            self.source = source
+            self.size = size
+            self.disease = disease
