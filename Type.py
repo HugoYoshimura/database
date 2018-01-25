@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Integer
 import models.Type
-from capivaraprojects.greeneyes.repository.base import Base
+from repository.base import Base
 
 
 class Type(Base.Base):
