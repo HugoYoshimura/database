@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String, Integer
 from sqlalchemy.orm import relationship
-from models.Plant import Plant as PlantModel
 import database.Disease
+import models.Plant
 from repository.base import Base
 
 
@@ -11,7 +11,7 @@ class Plant(Base.Base):
     id = Column(Integer, primary_key=True)
     scientificName = Column('scientific_name', String(2000))
     commonName = Column('common_name', String(2000))
-    diseases = relationship('Disease',
+    diseases = relationship('database.Disease.Disease', lazy='subquery',
                             back_populates='plant')
 
     def __init__(self,
@@ -19,7 +19,7 @@ class Plant(Base.Base):
                  scientificName="",
                  commonName="",
                  diseases=[],
-                 plant=PlantModel()):
+                 plant=models.Plant.Plant()):
         if(not plant.commonName or not plant.id):
             self.id = plant.id
             self.scientificName = plant.scientificName

@@ -12,29 +12,29 @@ class Image(Base.Base):
     url = Column(String(2000))
     description = Column(String(2000))
     source = Column(String(2000))
-    size = Column(Integer, ForeignKey('types.id'))
+    size = Column(Integer)
     idDisease = Column('id_disease', Integer, ForeignKey('diseases.id'))
     disease = relationship('Disease', back_populates='images')
 
     def __init__(self,
-                 id=0,
                  url='',
                  description='',
                  source='',
                  size=0,
-                 disease=object, # =Disease(),
+                 idDisease=0,
+                 disease=object,  # =Disease(),
                  image=ImageModel()):
         if (not image.id or not image.url):
-            self.id = image.id
             self.url = image.url
             self.description = image.description
             self.source = image.source
             self.size = image.size
-            self.disease = Disease(image.disease)
+            self.idDisease = image.disease.id
+            # self.disease = database.Disease.Disease(image.disease)
         else:
-            self.id = id
             self.url = url
             self.description = description
             self.source = source
             self.size = size
-            self.disease = disease
+            self.idDisease = idDisease
+            # self.disease = disease
