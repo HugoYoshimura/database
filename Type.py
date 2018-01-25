@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String, Integer
-from capivaraprojects.greeneyes.models.Type import Type as TypeModel
+import models.Type
 from capivaraprojects.greeneyes.repository.base import Base
 
 
@@ -10,7 +10,7 @@ class Type(Base.Base):
     value = Column(String(2000))
     description = Column(String(2000))
 
-    def __init__(self, id, value, description, type=TypeModel()):
+    def __init__(self, id, value, description, type=models.Type.Type()):
         if(not type.value or not type.id):
             self.id = type.id
             self.value = type.value

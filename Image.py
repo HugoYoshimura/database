@@ -1,8 +1,8 @@
 from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import relationship
-from capivaraprojects.greeneyes.models.Image import ImageModel
-from capivaraprojects.greeneyes.database.Disease import Disease
-from capivaraprojects.greeneyes.repository.base import Base
+from models.Image import Image as ImageModel
+import database.Disease
+from repository.base import Base
 
 
 class Image(Base.Base):
@@ -22,7 +22,7 @@ class Image(Base.Base):
                  description='',
                  source='',
                  size=0,
-                 disease=Disease(),
+                 disease=object, # =Disease(),
                  image=ImageModel()):
         if (not image.id or not image.url):
             self.id = image.id

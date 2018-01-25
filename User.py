@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Integer, ForeignKey
-from capivaraprojects.greeneyes.models.User import User as UserModel
-from capivaraprojects.greeneyes.repository.base import Base
+import models.User
+from repository.base import Base
 
 
 class User(Base.Base):
@@ -24,7 +24,7 @@ class User(Base.Base):
                  salt,
                  dateInsertion,
                  dateUpdate,
-                 user=UserModel()):
+                 user=models.User()):
         if (user.id or user.username):
             self.id = user.id
             self.idType = user.type.id

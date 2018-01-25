@@ -1,8 +1,8 @@
 from sqlalchemy import Column, String, Integer
 from sqlalchemy.orm import relationship
-from capivaraprojects.greeneyes.models.Plant import Plant as PlantModel
-from capivaraprojects.greeneyes.database.Disease import Disease
-from capivaraprojects.greeneyes.repository.base import Base
+from models.Plant import Plant as PlantModel
+import database.Disease
+from repository.base import Base
 
 
 class Plant(Base.Base):
@@ -26,7 +26,7 @@ class Plant(Base.Base):
             self.commonName = plant.commonName
             self.diseases = []
             for disease in plant.diseases:
-                self.diseases.append(Disease(disease))
+                self.diseases.append(database.Disease.Disease(disease))
         else:
             self.id = id
             self.scientificName = scientificName
