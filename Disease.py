@@ -14,14 +14,14 @@ class Disease(Base.Base):
     commonName = Column('common_name', String(2000))
     idPlant = Column('id_plant', Integer, ForeignKey('plants.id'))
     plant = relationship('Plant', back_populates='diseases')
-    images = relationship('Image',
+    images = relationship('Image', lazy='subquery', 
                           back_populates='disease')
 
     def __init__(self,
                  id=0,
                  scientificName="",
                  commonName="",
-                 plant=database.Plant.Plant(),
+                 plant=object(),  # database.Plant.Plant(),
                  images=[],
                  disease=DiseaseModel()):
         if (not disease.id or not disease.scientificName):
