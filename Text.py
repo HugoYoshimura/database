@@ -12,8 +12,13 @@ class Text(Base.Base):
     value = Column(String(2000))
     description = Column(String(2000))
 
-    def __init__(self, id, language, tag, value, description,
-                 text=models.Text()):
+    def __init__(self,
+                 id,
+                 language,
+                 tag,
+                 value,
+                 description,
+                 text=models.Text.Text()):
         if (not text.id or not text.value):
             self.id = text.id
             self.language = text.language

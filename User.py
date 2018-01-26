@@ -24,7 +24,7 @@ class User(Base.Base):
                  salt,
                  dateInsertion,
                  dateUpdate,
-                 user=models.User()):
+                 user=models.User.User()):
         if (user.id or user.username):
             self.id = user.id
             self.idType = user.type.id

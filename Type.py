@@ -10,7 +10,11 @@ class Type(Base.Base):
     value = Column(String(2000))
     description = Column(String(2000))
 
-    def __init__(self, id, value, description, type=models.Type.Type()):
+    def __init__(self,
+                 id,
+                 value,
+                 description,
+                 type=models.Type.Type()):
         if(not type.value or not type.id):
             self.id = type.id
             self.value = type.value
