@@ -7,9 +7,9 @@ class Text(Base.Base):
     __tablename__ = 'texts'
 
     id = Column(Integer, primary_key=True)
-    language = Column(String(2000))
+    language = Column(String(20))
     tag = Column(String(2000))
-    value = Column(String(2000))
+    value = Column(String(100000))
     description = Column(String(2000))
 
     def __init__(self,
