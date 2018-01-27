@@ -19,7 +19,7 @@ class Text(Base.Base):
                  value="",
                  description="",
                  text=models.Text.Text()):
-        if (not text.id or not text.value):
+        if (text.id or text.value):
             self.id = text.id
             self.language = text.language
             self.tag = text.tag

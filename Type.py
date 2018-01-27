@@ -15,7 +15,7 @@ class Type(Base.Base):
                  value="",
                  description="",
                  type=models.Type.Type()):
-        if(not type.value or not type.id):
+        if(type.value or type.id):
             self.id = type.id
             self.value = type.value
             self.description = type.description
