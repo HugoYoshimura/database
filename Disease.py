@@ -24,7 +24,7 @@ class Disease(Base.Base):
                  plant=object(),  # database.Plant.Plant(),
                  images=[],
                  disease=DiseaseModel()):
-        if (not disease.id or not disease.scientificName):
+        if (disease.id or disease.scientificName):
             self.id = disease.id
             self.scientificName = disease.scientificName
             self.commonName = disease.commonName

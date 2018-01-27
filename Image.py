@@ -24,7 +24,7 @@ class Image(Base.Base):
                  idDisease=0,
                  disease=object,  # =Disease(),
                  image=ImageModel()):
-        if (not image.id or not image.url):
+        if (image.id or image.url):
             self.url = image.url
             self.description = image.description
             self.source = image.source

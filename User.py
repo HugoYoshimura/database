@@ -16,14 +16,14 @@ class User(Base.Base):
     dateUpdate = Column('date_last_update', String(100))
 
     def __init__(self,
-                 id,
-                 idType,
-                 email,
-                 username,
-                 password,
-                 salt,
-                 dateInsertion,
-                 dateUpdate,
+                 id=0,
+                 idType=0,
+                 email="",
+                 username="",
+                 password="",
+                 salt="",
+                 dateInsertion="",
+                 dateUpdate="",
                  user=models.User.User()):
         if (user.id or user.username):
             self.id = user.id
