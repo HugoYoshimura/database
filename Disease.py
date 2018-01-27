@@ -21,6 +21,7 @@ class Disease(Base.Base):
                  id=0,
                  scientificName="",
                  commonName="",
+                 idPlant=0,
                  plant=object(),  # database.Plant.Plant(),
                  images=[],
                  disease=DiseaseModel()):
@@ -28,7 +29,8 @@ class Disease(Base.Base):
             self.id = disease.id
             self.scientificName = disease.scientificName
             self.commonName = disease.commonName
-            self.plant = database.Plant.Plant(disease.plant)
+            self.idPlant = disease.plant.id
+            #self.plant = database.Plant.Plant(disease.plant)
             self.images = []
             for image in disease.images:
                 self.images.append(database.Image.Image(image))
@@ -36,5 +38,6 @@ class Disease(Base.Base):
             self.id = id
             self.scientificName = scientificName
             self.commonName = commonName
-            self.plant = plant
+            self.idPlant = disease.plant.id
+            #self.plant = plant
             self.images = images
