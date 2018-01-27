@@ -13,11 +13,11 @@ class Text(Base.Base):
     description = Column(String(2000))
 
     def __init__(self,
-                 id,
-                 language,
-                 tag,
-                 value,
-                 description,
+                 id=0,
+                 language="",
+                 tag="",
+                 value="",
+                 description="",
                  text=models.Text.Text()):
         if (not text.id or not text.value):
             self.id = text.id
