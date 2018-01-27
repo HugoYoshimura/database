@@ -7,19 +7,19 @@ class Text(Base.Base):
     __tablename__ = 'texts'
 
     id = Column(Integer, primary_key=True)
-    language = Column(String(2000))
+    language = Column(String(20))
     tag = Column(String(2000))
-    value = Column(String(2000))
+    value = Column(String(100000))
     description = Column(String(2000))
 
     def __init__(self,
-                 id,
-                 language,
-                 tag,
-                 value,
-                 description,
+                 id=0,
+                 language="",
+                 tag="",
+                 value="",
+                 description="",
                  text=models.Text.Text()):
-        if (not text.id or not text.value):
+        if (text.id or text.value):
             self.id = text.id
             self.language = text.language
             self.tag = text.tag

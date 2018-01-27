@@ -20,7 +20,7 @@ class Plant(Base.Base):
                  commonName="",
                  diseases=[],
                  plant=models.Plant.Plant()):
-        if(not plant.commonName or not plant.id):
+        if(plant.commonName or plant.id):
             self.id = plant.id
             self.scientificName = plant.scientificName
             self.commonName = plant.commonName
