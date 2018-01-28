@@ -11,7 +11,7 @@ class User(Base.Base):
     id = Column(Integer, primary_key=True)
     email = Column(String(200))
     username = Column(String(20))
-    password = Column(String(128))
+    password = Column(String(256))
     salt = Column(String(32))
     dateInsertion = Column('date_insertion', String(100))
     dateUpdate = Column('date_last_update', String(100))
