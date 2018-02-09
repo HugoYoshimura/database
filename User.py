@@ -17,14 +17,22 @@ class User(Base.Base):
 
     def __init__(self,
                  id=0,
+<<<<<<< HEAD
+=======
+                 idType=0,
+>>>>>>> 25dd9d83dd0687459ebb71ffeed4e52054b32c1e
                  email="",
                  username="",
                  password="",
                  salt="",
                  dateInsertion="",
                  dateUpdate="",
+<<<<<<< HEAD
                  idType=0,
                  user=UserModel):
+=======
+                 user=models.User.User()):
+>>>>>>> 25dd9d83dd0687459ebb71ffeed4e52054b32c1e
         if (user.id or user.username):
             self.id = user.id
             self.email = user.email
