@@ -19,7 +19,7 @@ class AnalysisResult(Base.Base):
                  idDisease=0,
                  score=0,
                  analysisResult=AnalysisResultModel()):
-        if (analysisResult.id):
+        if if (analysisResult.id or analysisResult.idAnalysis or analysisResult.idDisease or analysisResult.score):
             self.id = analysisResult.id
             self.idAnalysis = analysisResult.idAnalysis
             self.idDisease = analysisResult.idDisease
