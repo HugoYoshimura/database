@@ -14,7 +14,7 @@ class Analysis(Base.Base):
                  id=0,
                  idImage=0,
                  analysis=AnalysisModel()):
-        if (analysis.id):
+        if (analysis.id or analysis.idImage):
             self.id = analysis.id
             self.idImage = analysis.idImage
         else:
