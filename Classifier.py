@@ -1,4 +1,3 @@
-
 from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 import database.Plant
@@ -8,7 +7,7 @@ from repository.base import Base
 
 
 
-class ClassifierDB(Base.Base):
+class Classifier(Base.Base):
 	__tablename__ = 'classifiers'
 
 	id = Column(Integer, primary_key=True)
@@ -29,7 +28,7 @@ class ClassifierDB(Base.Base):
 				self.analyses.append(database.Analysis.Analysis(analysis))
 		else:
 			self.id = id
-                        self.idPlant = classifier.plant.id
-                        self.tag = tag
-                        self.path = path
+			self.idPlant = classifier.plant.id
+			self.tag = tag
+			self.path = path
 			self.analyses = analyses
