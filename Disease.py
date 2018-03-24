@@ -38,6 +38,6 @@ class Disease(Base.Base):
             self.id = id
             self.scientificName = scientificName
             self.commonName = commonName
-            self.idPlant = disease.plant.id
+            self.idPlant = idPlant
             #self.plant = plant
             self.images = images
