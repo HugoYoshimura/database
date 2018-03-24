@@ -28,7 +28,7 @@ class Classifier(Base.Base):
 				self.analyses.append(database.Analysis.Analysis(analysis))
 		else:
 			self.id = id
-			self.idPlant = classifier.plant.id
+			self.idPlant = idPlant
 			self.tag = tag
 			self.path = path
 			self.analyses = analyses
