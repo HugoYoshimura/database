@@ -2,6 +2,7 @@ from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 import database.Image
 import database.Plant
+import database.AnalysisResult
 from models.Disease import Disease as DiseaseModel
 from repository.base import Base
 
@@ -16,7 +17,9 @@ class Disease(Base.Base):
     plant = relationship('Plant', back_populates='diseases')
     images = relationship('Image', lazy='subquery', 
                           back_populates='disease')
-
+    analysis_result = relationship('database.AnalysisResult.AnalysisResult',
+                                    lazy='subquery',
+                                    back_populates='disease')
     def __init__(self,
                  id=0,
                  scientificName="",
