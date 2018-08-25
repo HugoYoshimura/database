@@ -12,7 +12,7 @@ class AnalysisResult(Base.Base):
     idAnalysis = Column('id_analysis', Integer, ForeignKey('analysis.id'))
     idDisease = Column('id_disease', Integer, ForeignKey('diseases.id'))
     score = Column('score', Float)
-    frame = Column('frame', String(20))
+    frame = Column('frame', String(2000))
     disease = relationship('database.Disease.Disease', back_populates='analysis_result')
     analysis = relationship('database.Analysis.Analysis', back_populates='analysis_result')
 
