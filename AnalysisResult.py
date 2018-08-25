@@ -14,7 +14,7 @@ class AnalysisResult(Base.Base):
     score = Column('score', Float)
     frame = Column('frame', String(2000))
     disease = relationship('database.Disease.Disease', back_populates='analysis_result')
-    analysis = relationship('database.Analysis.Analysis', back_populates='analysis_result')
+    analysis = relationship('database.Analysis.Analysis', back_populates='analysis_results')
 
     def __init__(self,
                  id=0,
