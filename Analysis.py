@@ -14,7 +14,7 @@ class Analysis(Base.Base):
     idClassifier = Column('id_classifier', Integer, ForeignKey('classifiers.id'))
     image = relationship('Image', back_populates='analysis')
     classifier = relationship('Classifier', back_populates='analysis')
-    analysis_result = relationship('database.AnalysisResult.AnalysisResult', 
+    analysis_results = relationship('database.AnalysisResult.AnalysisResult', 
                                     lazy='subquery',
                                     back_populates='analysis')
 
@@ -24,12 +24,17 @@ class Analysis(Base.Base):
                  image=object(),
                  idClassifier=0,
                  classifier=object(),
-                 analysis=AnalysisModel()):
+                 analysis=AnalysisModel(),
+                 analysis_results=models.AnalysisResult.AnalysisResult()):
         if (analysis.id or analysis.image.id or analysis.classifier.id):
             self.id = analysis.id
             self.idImage = analysis.image.id
             self.idClassifier = analysis.classifier.id
+            self.analysis_results = []
+            for result in analysis_results:
+                self.analysis_results.append(database.AnalysisResult.AnalysisResult(result))
         else:
             self.id = id
             self.idImage = idImage
             self.idClassifier = idClassifier
+            self.analysis_results = analysis_results
