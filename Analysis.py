@@ -4,7 +4,6 @@ import database.Image
 import database.Classifier
 import database.AnalysisResult
 from models.Analysis import Analysis as AnalysisModel
-from models.AnalysisResult import AnalysisResult as AnalysisResultModel
 from repository.base import Base
 
 
@@ -30,7 +29,7 @@ class Analysis(Base.Base):
                  idClassifier=0,
                  classifier=object(),
                  analysis=AnalysisModel(),
-                 analysis_results=AnalysisResultModel()):
+                 analysis_results=[]):
         if (analysis.id or analysis.image.id or analysis.classifier.id):
             self.id = analysis.id
             self.idImage = analysis.image.id
