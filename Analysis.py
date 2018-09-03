@@ -20,6 +20,7 @@ class Analysis(Base.Base):
     classifier = relationship('Classifier', back_populates='analysis')
     analysis_results = relationship('database.AnalysisResult.AnalysisResult',
                                     lazy='subquery',
+                                    cascade='delete',
                                     back_populates='analysis')
 
     def __init__(self,
