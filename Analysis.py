@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 import database.Image
 import database.Classifier
 import database.AnalysisResult
+import database.User
 from models.Analysis import Analysis as AnalysisModel
 from repository.base import Base
 
@@ -35,11 +36,14 @@ class Analysis(Base.Base):
                  idClassifier=0,
                  classifier=object(),
                  analysis=AnalysisModel(),
-                 analysis_results=[]):
+                 analysis_results=[],
+                 user=database.User.User(),
+                 idUser=0):
         if (analysis.id or analysis.image.id or analysis.classifier.id):
             self.id = analysis.id
             self.idImage = analysis.image.id
             self.idClassifier = analysis.classifier.id
+            self.idUser = analysis.user.id
             self.analysis_results = []
             for result in analysis_results:
                 self.analysis_results.append(
@@ -48,4 +52,5 @@ class Analysis(Base.Base):
             self.id = id
             self.idImage = idImage
             self.idClassifier = idClassifier
+            self.idUser = idUser
             self.analysis_results = analysis_results

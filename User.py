@@ -41,7 +41,7 @@ class User(Base.Base):
             self.idType = user.idType
             self.analysis = []
             for an in analysis:
-                self.analysis.append(database.Analysis.Analysis())
+                self.analysis.append(database.Analysis.Analysis(an))
         else:
             self.id = id
             self.email = email
@@ -53,4 +53,4 @@ class User(Base.Base):
             self.idType = idType
             self.analysis = []
             for an in analysis:
-                self.analysis.append(database.Analysis.Analysis())
+                self.analysis.append(database.Analysis.Analysis(an))
