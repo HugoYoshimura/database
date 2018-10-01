@@ -1,6 +1,8 @@
 from sqlalchemy import Column, String, Integer
+from sqlalchemy.orm import relationship
 from models.User import User as UserModel
 from repository.base import Base
+import database.Analysis
 
 
 class User(Base.Base):
@@ -14,6 +16,8 @@ class User(Base.Base):
     dateInsertion = Column('date_insertion', String(100))
     dateUpdate = Column('date_last_update', String(100))
     idType = Column('id_type', Integer)
+    analysis = relationship('database.Analysis.Analysis', lazy='subquery',
+                            back_populates='user')
 
     def __init__(self,
                  id=0,
@@ -24,7 +28,8 @@ class User(Base.Base):
                  dateInsertion="",
                  dateUpdate="",
                  idType=0,
-                 user=UserModel):
+                 user=UserModel,
+                 analysis=[]):
         if (user.id or user.username):
             self.id = user.id
             self.email = user.email
@@ -34,6 +39,9 @@ class User(Base.Base):
             self.dateInsertion = user.dateInsertion
             self.dateUpdate = user.dateUpdate
             self.idType = user.idType
+            self.analysis = []
+            for an in analysis:
+                self.analysis.append(database.Analysis.Analysis())
         else:
             self.id = id
             self.email = email
@@ -43,3 +51,6 @@ class User(Base.Base):
             self.dateInsertion = dateInsertion
             self.dateUpdate = dateUpdate
             self.idType = idType
+            self.analysis = []
+            for an in analysis:
+                self.analysis.append(database.Analysis.Analysis())
