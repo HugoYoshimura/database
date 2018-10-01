@@ -37,7 +37,7 @@ class Analysis(Base.Base):
                  classifier=object(),
                  analysis=AnalysisModel(),
                  analysis_results=[],
-                 user=database.User.User(),
+                 user=object(),
                  idUser=0):
         if (analysis.id or analysis.image.id or analysis.classifier.id):
             self.id = analysis.id
