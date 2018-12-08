@@ -18,24 +18,24 @@ class Text(Base.Base):
                  id=0,
                  language="",
                  plant="",
-		 status="",
-		 attribute="",
+		  status="",
+		  attribute="",
                  value="",
                  reference="",
                  text=models.Text.Text()):
         if (text.id or text.value):
             self.id = text.id
             self.language = text.language
-	    self.plant = text.plant
-	    self.status = text.status
+	     self.plant = text.plant
+	     self.status = text.status
             self.attribute = text.attribute
             self.value = text.value
             self.reference = text.reference
         else:
             self.id = id
             self.language = language
-	    self.plant = plant
-	    self.status = status
+	     self.plant = plant
+	     self.status = status
             self.attribute = attribute
             self.value = value
             self.reference = reference
