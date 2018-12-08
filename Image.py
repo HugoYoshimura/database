@@ -2,6 +2,7 @@ from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 from models.Image import Image as ImageModel
 import database.Disease
+import database.Analysis
 from repository.base import Base
 
 
@@ -15,6 +16,7 @@ class Image(Base.Base):
     size = Column(Integer)
     idDisease = Column('id_disease', Integer, ForeignKey('diseases.id'))
     disease = relationship('Disease', back_populates='images')
+    analysis = relationship('Analysis', back_populates='image')
 
     def __init__(self,
                  url='',

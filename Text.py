@@ -7,27 +7,35 @@ class Text(Base.Base):
     __tablename__ = 'texts'
 
     id = Column(Integer, primary_key=True)
-    language = Column(String(20))
-    tag = Column(String(2000))
+    language = Column(String(5))
+    plant = Column(String(200))
+    status = Column(String(200))
+    attribute = Column(String(2000))
     value = Column(String(100000))
-    description = Column(String(2000))
+    reference = Column(String(2000))
 
     def __init__(self,
                  id=0,
                  language="",
-                 tag="",
+                 plant="",
+		 status="",
+		 attribute="",
                  value="",
-                 description="",
+                 reference="",
                  text=models.Text.Text()):
         if (text.id or text.value):
             self.id = text.id
             self.language = text.language
-            self.tag = text.tag
+	    self.plant = text.plant
+	    self.status = text.status
+            self.attribute = text.attribute
             self.value = text.value
-            self.description = text.description
+            self.reference = text.reference
         else:
             self.id = id
             self.language = language
-            self.tag = tag
+	    self.plant = plant
+	    self.status = status
+            self.attribute = attribute
             self.value = value
-            self.description = description
+            self.reference = reference
