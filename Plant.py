@@ -1,6 +1,7 @@
 from sqlalchemy import Column, String, Integer
 from sqlalchemy.orm import relationship
 import database.Disease
+import database.Classifier
 import models.Plant
 from repository.base import Base
 
@@ -12,6 +13,8 @@ class Plant(Base.Base):
     scientificName = Column('scientific_name', String(2000))
     commonName = Column('common_name', String(2000))
     diseases = relationship('database.Disease.Disease', lazy='subquery',
+                            back_populates='plant')
+    classifiers = relationship('database.Classifier.Classifier', lazy='subquery',
                             back_populates='plant')
 
     def __init__(self,

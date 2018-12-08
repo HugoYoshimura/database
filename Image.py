@@ -16,7 +16,8 @@ class Image(Base.Base):
     size = Column(Integer)
     idDisease = Column('id_disease', Integer, ForeignKey('diseases.id'))
     disease = relationship('Disease', back_populates='images')
-    analysis = relationship('Analysis', back_populates='image')
+    analysis = relationship('database.Analysis.Analysis', lazy='subquery',
+                            back_populates='image')
 
     def __init__(self,
                  url='',
